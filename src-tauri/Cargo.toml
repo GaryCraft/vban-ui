@@ -1,10 +1,10 @@
 [package]
 name = "vban-ui"
 version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+description = "Just a Linux UI for vban"
+authors = ["GaryC"]
+license = "GPL-3.0"
+repository = "https://github.com/GaryCraft/vban-ui"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

@@ -23,7 +23,7 @@
 			"targets": "all",
 			"identifier": "xyz.our-space.xdev.vban-ui",
 			"icon": [
-				
+				"icons/logo.png"
 			]
 		},
 		"security": {
