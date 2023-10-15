@@ -12,7 +12,7 @@
 	},
 	"tauri": {
 		"allowlist": {
-			"all": false,
+			"all": true,
 			"shell": {
 				"all": false,
 				"open": true
@@ -28,6 +28,15 @@
 		},
 		"security": {
 			"csp": null
-		}
+		},
+		"windows": [
+			{
+				"fullscreen": false,
+				"resizable": true,
+				"title": "vban-ui",
+				"width": 800,
+				"height": 600
+			}
+		]
 	}
 }
