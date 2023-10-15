@@ -1,4 +1,6 @@
 # VBAN UI for Linux
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGaryCraft%2Fvban-ui.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FGaryCraft%2Fvban-ui?ref=badge_shield)
+
 
 This is a simple UI for VBAN on Linux. It is written in Rust and Tauri.
 
@@ -19,3 +21,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 [GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGaryCraft%2Fvban-ui.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FGaryCraft%2Fvban-ui?ref=badge_large)
