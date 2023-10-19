@@ -8,14 +8,27 @@
 	},
 	"package": {
 		"productName": "vban-ui",
-		"version": "0.0.0"
+		"version": "0.1.0"
 	},
 	"tauri": {
 		"allowlist": {
 			"all": true,
 			"shell": {
 				"all": false,
-				"open": true
+				"open": true,
+				"execute": true,
+				"scope": [
+					{
+						"cmd": "vban_receptor",
+						"name": "receptor",
+						"args": true
+					},
+					{
+						"cmd": "vban_emitter",
+						"name": "emitter",
+						"args": true
+					}
+				]
 			}
 		},
 		"bundle": {
