@@ -27,13 +27,18 @@ const addProcess = () => {
 		type: isEmitter.value ? 'emitter' : 'receiver',
 		name: name.value,
 		port: 6980,
-		target: '',
+		target: '127.0.0.1',
 	});
 	eProcessList.value = store.getEmmiters;
 	rProcessList.value = store.getReceivers;
 };
 const processSave = (data: VbanProcess) => {
 	store.setProcess(data);
+	eProcessList.value = store.getEmmiters;
+	rProcessList.value = store.getReceivers;
+};
+const processDelete = (id: string) => {
+	store.removeProcess(id);
 	eProcessList.value = store.getEmmiters;
 	rProcessList.value = store.getReceivers;
 };
@@ -79,8 +84,8 @@ const processSave = (data: VbanProcess) => {
 				</button>
 			</div>
 			<div class="processes">
-				<VbanProcessC :global-enabled="enabled" v-for="process in eProcessList" :id="process.id!" :key="process.id" @save="processSave"/>
-				<VbanProcessC :global-enabled="enabled" v-for="process in rProcessList" :id="process.id!" :key="process.id" @save="processSave"/>
+				<VbanProcessC :global-enabled="enabled" v-for="process in eProcessList" :id="process.id!" :key="process.id" @save="processSave" @delete="processDelete"/>
+				<VbanProcessC :global-enabled="enabled" v-for="process in rProcessList" :id="process.id!" :key="process.id" @save="processSave" @delete="processDelete"/>
 			</div>
 		</div>
 		<Suspense>

@@ -87,15 +87,16 @@ fetchStore();
 					v-model="streamName" />
 			</div>
 			<div class="process-enabled px-2">
-				<button class="text-white font-bold py-2 px-4" :class="enabled && globalEnabled ? 'bg-green-500' : 'bg-red-500'"
-					@click="enabled = !enabled">
+				<button class="text-white font-bold py-2 px-4"
+					:class="enabled && globalEnabled ? 'bg-green-500' : 'bg-red-500'" @click="enabled = !enabled">
 					{{ enabled ? 'Enabled' : 'Disabled' }}
 				</button>
 			</div>
 		</div>
 		<div class="store-options">
-			<mdicon name="content-save" @click="saveMe" :class="isChanged ? 'text-green-500' : 'text-gray-500'" />
-			<mdicon name="delete" @click="deleteMe" />
+			<mdicon name="content-save" @click="saveMe" :class="isChanged ? 'text-green-500' : 'text-gray-500'"
+				class="cursor-pointer" />
+			<mdicon name="delete" @click="deleteMe" class="cursor-pointer" />
 			<div class="error" v-if="error !== ''">
 				<mdicon name="error" />
 				<div class="error-alert flex justify-center items-center">
@@ -103,7 +104,9 @@ fetchStore();
 				</div>
 			</div>
 		</div>
-		<ProcessHandler v-if="enabled && globalEnabled" :id="props.id" />
+		<Suspense>
+			<ProcessHandler v-if="enabled && globalEnabled" :id="props.id" />
+		</Suspense>
 	</div>
 </template>
 <style scoped>
