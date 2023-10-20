@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Ref, computed, ref } from 'vue';
+import { Ref, computed, onBeforeUnmount, ref } from 'vue';
 import { VbanProcess, useProcessStore } from '../stores/vbanListStore';
-import { Command } from '@tauri-apps/api/shell';
+import { Child, Command } from '@tauri-apps/api/shell';
 type Status = "healty" | "stopped";
 const props = defineProps({
 	id: {
@@ -29,6 +29,7 @@ const buildCommand = (data: VbanProcess) => {
 }
 console.log("Initializing process handler for " + p.value?.name);
 // Start process
+let child: Child;
 if (!p.value) {
 	console.error('Process not found');
 }
@@ -57,14 +58,18 @@ else {
 			setStatus("stopped");
 		});
 		console.log("Starting process");
-		const out = await cmd.execute();
-		console.log(out);
+		child = await cmd.spawn();
+		console.log(child);
 	} catch (e) {
 		lines.value.push(e as string);
 		console.error(e);
 		setStatus("stopped");
 	}
 }
+onBeforeUnmount(() => {
+	console.log("Killing process");
+	child.kill();
+});
 
 </script>
 <template>
