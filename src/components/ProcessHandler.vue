@@ -22,10 +22,10 @@ const buildCommand = (data: VbanProcess) => {
 	let cmd: string = data.type == 'emitter' ? 'vban_emitter' : 'vban_receptor';
 	const args: string[] = [];
 	`${data.port}` !== '' && args.push(`-p ${data.port}`);
-	`${data.target}` !== '' && args.push(`-t ${data.target}`);
+	`${data.target}` !== '' && args.push(`-i ${data.target}`);
 	`${data.name}` !== '' && args.push(`-s ${data.name}`);
 	console.info("Executing command: " + args.join(' '));
-	return { cmd: cmd, args: args.join(' ') }
+	return { cmd: cmd, args: args }
 }
 console.log("Initializing process handler for " + p.value?.name);
 // Start process
@@ -37,6 +37,7 @@ else {
 		const c = buildCommand(p.value);
 		const cmd = new Command(c.cmd, c.args);
 		setStatus("healty");
+		lines.value.push(c.cmd + ' ' + c.args.join(' '));
 		cmd.addListener('close', () => {
 			console.log("Process closed");
 			setStatus("stopped");
